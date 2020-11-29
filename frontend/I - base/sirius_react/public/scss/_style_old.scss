@@ -1,0 +1,91 @@
+$screens: (all, 1024, 640); 
+@mixin media($property, $values){
+    @for $i from 1 through length($values) { 
+        @if nth($values, $i) != ''{ 
+            @if nth($screens, $i) == 'all'{ 
+                #{$property}: unquote(#{nth($values, $i)});
+            } 
+            @else {
+                @media screen and (max-width: nth($screens, $i) + 'px') {
+                    #{$property}: unquote(#{nth($values, $i)});
+                }
+            }
+        }
+    }
+}
+
+@mixin invertColor($r,$g,$b) {
+    color:rgb(255-$r,255-$g,255-$b);
+}
+@mixin invertBackground($r,$g,$b,$a) {
+    background: rgba(255-$r,255-$g,255-$b,$a);
+}
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;900&display=swap');
+
+@keyframes textCursorAnimation {
+    50%{content:"_"}
+    100%{content:""}
+}
+@keyframes emojiAnimation {
+    0% {filter:hue-rotate(0deg)};
+    100%{filter:hue-rotate(360deg)};
+}
+body {
+    background-color: rgb(12,12,12);
+    color: #2bd323;
+    overflow:hidden;
+}
+#root {
+    padding: 3.8%;
+}
+@media screen and (min-width:450) {
+    .name {
+        font-size: 45px;
+    }
+}
+@media screen and(min-width:1024) {
+    .name {
+        font-size:72px;
+    }
+}
+.name {
+    display:block;
+    user-select:text;
+    text-align: center;
+    position: static;
+    margin-top:.5em;
+    margin-left:10*.245vh;
+    font-family: 'Inconsolata';
+    width:auto;
+    .textCursor {
+        font-weight: bolder;
+        user-select: none;
+        position: absolute;
+    }
+    .textCursor::after {
+        content:"_";
+        animation: textCursorAnimation 1s infinite;
+    }
+}
+.name::selection {
+    @include invertColor(33,210,25);
+    @include invertBackground(12, 12, 12,190)
+}
+.jingu-logo-img {
+    position: static;
+    margin-top:2em;
+    margin-left:32vw;
+    max-width: 40vw;
+    max-height: 40vw;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+}
+.emoji {
+    font-size:152px;
+    position: static;
+    display:inline-block;
+    margin-top:1em;
+    margin-left:1em;
+    animation: emojiAnimation 8s 0s ease-in-out infinite;
+}

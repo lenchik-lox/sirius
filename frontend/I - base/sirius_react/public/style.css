@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;900&display=swap");
+@keyframes textCursorAnimation {
+  50% {
+    content: "_"; }
+  100% {
+    content: ""; } }
+@keyframes emojiAnimation {
+  0% {
+    filter: hue-rotate(0deg); }
+  100% {
+    filter: hue-rotate(360deg); } }
+@keyframes emojiAnimation {
+  0% {
+    filter: hue-rotate(0deg); }
+  100% {
+    filter: hue-rotate(360deg); } }
+@media (max-width: 768px) {
+  .name {
+    font-size: 32px;
+    margin: 2.2em 0 2em 0;
+    text-align: -webkit-center; }
+
+  .jingu-logo-img {
+    max-width: 11em;
+    max-height: 11em;
+    margin-top: 4%;
+    box-sizing: border-box;
+    text-align: -webkit-center;
+    position: relative;
+    display: inline-block; }
+
+  .emoji {
+    text-align: -webkit-center;
+    margin-top: .1em;
+    font-size: 128px; }
+
+  #root {
+    padding: 0 0% 0 0%; }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    text-align: -webkit-center; } }
+@media (min-width: 768px) {
+  .jingu-logo-img {
+    max-width: 13em;
+    max-height: 13em;
+    margin-top: 4%;
+    margin-left: 62%;
+    z-index: 2;
+    position: absolute; }
+
+  .name {
+    font-size: 52px;
+    margin-top: 3em; }
+
+  .emoji {
+    margin-top: 6%;
+    font-size: 220px; }
+
+  #root {
+    padding: 0 10% 0 10%; } }
+body {
+  background: #0c0c0c;
+  color: #2bd323;
+  overflow: hidden;
+  margin: 0 0 0 0; }
+
+.emoji {
+  user-select: none;
+  position: relative;
+  display: inline-block;
+  animation: emojiAnimation 8s 0s ease-in-out infinite; }
+
+.name::selection {
+  color: #de2de6;
+  background: #f3f3f3; }
+
+.jingu-logo-img {
+  border-radius: 50%; }
+
+.name {
+  font-family: 'Inconsolata';
+  position: relative;
+  display: inline-block; }
+  .name .textCursor {
+    font-weight: bolder;
+    user-select: none;
+    position: absolute; }
+  .name .textCursor::after {
+    content: "_";
+    animation: textCursorAnimation 1s infinite; }
+
+/*# sourceMappingURL=style.css.map */

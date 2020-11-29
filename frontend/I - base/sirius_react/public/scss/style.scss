@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;900&display=swap');
+
+@mixin invertColor($r,$g,$b) {
+    color:rgb(255-$r,255-$g,255-$b);
+}
+@mixin invertBackground($r,$g,$b,$a) {
+    background: rgba(255-$r,255-$g,255-$b,$a);
+}
+
+@keyframes textCursorAnimation {
+    50%{content:"_"}
+    100%{content:""}
+}
+@keyframes emojiAnimation {
+    0% {filter:hue-rotate(0deg)};
+    100%{filter:hue-rotate(360deg)};
+}
+
+// mobile
+@media (max-width:768px) {
+    .name {
+        font-size:32px;
+        margin:2.2em 0 2em 0;
+        text-align: -webkit-center;
+    }
+    .jingu-logo-img {
+        max-width:11em;
+        max-height:11em;
+        margin-top:4%;
+        box-sizing:border-box;
+        text-align: -webkit-center;
+        position: relative;
+        display: inline-block;
+    }
+    .emoji {
+        text-align: -webkit-center;
+        margin-top:.1em;
+        font-size:128px;
+    }
+    #root {
+        padding:0 0% 0 0%;
+    }
+    .container {
+        width:100vw;
+        height:100vh;
+        text-align: -webkit-center;
+    }
+}
+// desktop
+@media (min-width:768px) {
+    .jingu-logo-img {
+        max-width:13em;
+        max-height:13em;
+        margin-top:4%;
+        margin-left:62%;
+        z-index: 2;
+        position: absolute;
+    }
+    .name {
+        font-size:1vw;
+        margin-top:3em;
+    }
+    .emoji {
+        margin-top:6%;
+        font-size:220px;
+    }
+    #root {
+        padding:0 10% 0 10%;
+    }
+}
+
+
+body {
+    background: rgb(12,12,12);
+    color:#2bd323;
+    overflow:hidden;
+    margin:0 0 0 0;
+}
+.emoji {
+    user-select:none;
+    position: relative;
+    display: inline-block;
+    animation: emojiAnimation 8s 0s ease-in-out infinite;
+}
+.name::selection {
+    @include invertColor(33,210,25);
+    @include invertBackground(12, 12, 12,190)
+}
+.jingu-logo-img {
+    border-radius: 50%;
+}
+.name {
+    font-family: 'Inconsolata';
+    position: relative;
+    display:inline-block;
+    .textCursor {
+        font-weight: bolder;
+        user-select: none;
+        position: absolute;
+    }
+    .textCursor::after {
+        content:"_";
+        animation: textCursorAnimation 1s infinite;
+    }
+}
